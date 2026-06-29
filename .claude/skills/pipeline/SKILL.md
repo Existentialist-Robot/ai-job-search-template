@@ -85,25 +85,52 @@ For each verified-open role that passes the anti-signal filter:
 
 ## Step 3: Compile Shortlist
 
-**MANDATORY — write the sweep to disk IMMEDIATELY.** The sweep document is written to `working/active/job_sweep_{YYYY-MM-DD}.md` as the **first action after discovery+evaluation, before presenting anything in chat**. Never produce a shortlist only in the chat reply — a chat-only sweep is lost the moment the session ends. Draft the doc, then summarize from it in chat.
+**MANDATORY — write the sweep to disk IMMEDIATELY.** The sweep document is written to `working/active/job_sweep_{YYYY-MM-DD}_{slug}.md` as the **first action after discovery+evaluation, before presenting anything in chat**. Never produce a shortlist only in the chat reply — a chat-only sweep is lost the moment the session ends. Draft the doc, then summarize from it in chat.
 
-Structure:
+### Canonical sweep doc format
 
 ```markdown
-# Pipeline Sweep — {DATE}
+# Job Sweep — {YYYY-MM-DD} — {Focus Label}
 
-**Boards searched:** {list}
-**Roles found:** {N} total → {M} after filter → {K} above threshold
+## Search focus
+{scope description or search_focus JSON block}
 
-| # | Pair | Role | Org | Level | Salary | Fit | P(interview) | P(hire\|int) | Closes | Status |
-|---|------|------|-----|-------|--------|-----|-------------|------------|--------|--------|
-| 1 | TBD | [Title](url) | Org | Clears/Door-opener | $X–Y | ★★★★☆ | 25% | 25% | Jun 30 | Pending |
+## Confirmed Open — Shortlist
+
+| # | Role | Org | Location | Salary | Posted | Closes | Fit | P(int) | P(hire\|int) | Status |
+|---|------|-----|----------|--------|--------|--------|-----|--------|-------------|--------|
+| 1 | [Title](url) | Org | City, Province (remote/hybrid) | $X–Y or Not listed (~$X–Y est.) | Mon DD | Mon DD ⚠️ VERIFY / URGENT | ★★★★☆ | 30% | 25% | Queue |
+
+**Probability rationale:** 1–2 sentences on why the P(int) estimates are what they are.
+(After running review agents: update P(int) — PASS=50%+, HOLD-FOR-HM=25–40%, AUTO-REJECT=<10%)
 
 ## Role Summaries
-For each role: 3-bullet rationale (why it fits, key gap, recommendation).
+
+### {N}. {Org} — {Title} ({Location})
+**Why it fits:** …  
+**Gap / risk:** …  
+**Recommendation:** Apply / Strong apply / Monitor / Skip
+
+## Strong but not in shortlist
+
+| Role | Org | Reason |
+|------|-----|--------|
+
+## Boards checked / blocked / no usable target
+
+| Board | Result |
+|-------|--------|
 ```
 
-**Markdown table rule:** any header containing a literal pipe — e.g. `P(hire|int)` — MUST escape it as `P(hire\|int)`, or the column breaks. Same for any cell text with a `|`.
+**Column rules:**
+- **Role** — hyperlink the title to the live posting URL (Adzuna mirror URL is fine if that has the full text)
+- **Salary** — posted range if available; otherwise `Not listed (~$X–Y est.)` with a calibrated estimate
+- **Posted / Closes** — actual dates; `⚠️ VERIFY` if close date absent; `⚠️ URGENT` if ≤3 days out
+- **Fit** — ★★★★★ scale: 5★=80–100%, 4★=65–79%, 3★=50–64%; minimum to include is 3★ (or `--min-stars` override)
+- **P(int) / P(hire\|int)** — conservative calibrated estimates; NEVER omit these columns
+- **Status** — `Queue`, `Verified open`, `⚠️ Closes {date}`, or `Skip`
+
+**Markdown table rule:** escape any `|` inside headers/cells as `\|` or the column breaks.
 
 ---
 

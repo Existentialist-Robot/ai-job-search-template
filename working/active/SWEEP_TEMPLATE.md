@@ -1,25 +1,47 @@
-# Pipeline Sweep — YYYY-MM-DD
+# Job Sweep — YYYY-MM-DD — [Focus Label]
 
-**Boards searched:** [list boards used]
-**Roles found:** N total → M after filter → K above threshold
+## Search focus
 
-| # | Pair | Role | Org | Level | Salary | Fit | P(interview) | P(hire\|int) | Closes | Status |
-|---|------|------|-----|-------|--------|-----|-------------|------------|--------|--------|
-| 1 | TBD | [Role Title](https://posting-url) | Org Name | Clears/Door-opener | $X–Y K | ★★★★☆ | 25% | 25% | YYYY-MM-DD | Pending |
+[Describe scope: sectors, locations, seniority level, search_focus JSON if using the viz]
+
+## Confirmed Open — Shortlist
+
+| # | Role | Org | Location | Salary | Posted | Closes | Fit | P(int) | P(hire\|int) | Status |
+|---|------|-----|----------|--------|--------|--------|-----|--------|-------------|--------|
+| 1 | [Role Title](https://posting-url) | Org Name | City, Province (hybrid/remote) | Not listed (~$X–Y est.) | Mon DD | Mon DD ⚠️ VERIFY | ★★★★☆ | 25% | 25% | Queue |
+
+**Probability rationale:** [1–2 sentences on why the P(int) estimates are what they are. Update after running review agents: PASS=50%+, HOLD-FOR-HM=25–40%.]
 
 ---
 
 ## Role Summaries
 
-### 1. [Role Title] — [Org Name]
+### 1. [Org] — [Role Title] ([Location])
 
-- **Why it fits:** [specific match between candidate profile and role requirements]
-- **Key gap:** [the one meaningful gap; how to frame it]
-- **Recommendation:** [Apply / Strong apply / Monitor / Skip]
+**Why it fits:** [specific match between candidate profile and role requirements]  
+**Gap / risk:** [the one meaningful gap; how to frame it]  
+**Recommendation:** Apply / Strong apply / Monitor / Skip
 
 ---
 
-## Notes
+## Strong but not in shortlist
 
-- Open-status gate pending: [list roles that need manual portal verification]
-- Pair assignments: TBD pending design page count confirmation
+| Role | Org | Reason |
+|------|-----|--------|
+| [Title](url) | Org | [Why excluded: already applied / below level / salary / closed / etc.] |
+
+---
+
+## Boards checked / blocked / no usable target
+
+| Board | Result |
+|-------|--------|
+| [Board name] | Readable, produced X roles / ATS-gated / no current openings |
+
+---
+
+## Open-status gate
+
+Roles that need live-portal verification before porting:
+
+- **[Org — Role]:** Check [portal URL] → confirm still accepting + verify close date

@@ -104,24 +104,28 @@ Add all fetched jobs to `seen_jobs.json`:
 
 **MANDATORY — write the sweep to `working/active/job_sweep_{YYYY-MM-DD}.md` FIRST, before presenting in chat.** A chat-only shortlist is lost when the session ends. Write the doc, then summarize from it.
 
-Doc structure:
+Doc structure — use the **canonical sweep format** (full template in `.claude/skills/pipeline/SKILL.md` → Step 3). Key table:
 
 ```markdown
-## New Job Matches — YYYY-MM-DD
-
-Found X verified-open positions (Y high, Z medium, W low-medium).
-
-| # | Fit | Title | Organization | Salary | Posted | Closes | URL |
-|---|-----|-------|-------------|--------|--------|--------|-----|
-
-### Highlights
-For each High or Medium role, add 2-3 bullets:
-- Why it matches the candidate's profile
-- The bridge (grant relationships, ecosystem work, relevant experience)
-- Any watch-out or gap to address in application
+| # | Role | Org | Location | Salary | Posted | Closes | Fit | P(int) | P(hire\|int) | Status |
+|---|------|-----|----------|--------|--------|--------|-----|--------|-------------|--------|
+| 1 | [Title](url) | Org | City, Province (hybrid) | Not listed (~$X–Y est.) | Jun DD | Jun DD ⚠️ VERIFY | ★★★★☆ | 30% | 25% | Queue |
 ```
 
-**Markdown table rule:** escape any literal pipe inside a header/cell — `P(hire|int)` → `P(hire\|int)` — or the column breaks.
+Column rules:
+- **Role** — hyperlink title to the live posting URL
+- **Salary** — posted range, or `Not listed (~$X–Y est.)` with a calibrated estimate
+- **Posted / Closes** — actual dates; `⚠️ VERIFY` if absent; `⚠️ URGENT` if ≤3 days
+- **Fit** — ★★★★★ scale (5★=80–100%, 4★=65–79%, 3★=50–64%)
+- **P(int) / P(hire\|int)** — conservative estimates; NEVER omit these columns
+- Escape any `|` in headers/cells as `\|` or the table breaks
+
+After the table, add a **Probability rationale** line (1–2 sentences).
+
+For each High or Medium role, add a 3-bullet summary:
+- Why it matches the candidate's profile
+- The bridge (relevant experience, relationships, credentials)
+- Any watch-out or gap to address in the application
 
 After presenting, ask:
 > "Want me to evaluate any of these in detail? Just give me the number(s)."
