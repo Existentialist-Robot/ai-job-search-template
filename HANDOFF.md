@@ -127,7 +127,15 @@ Your bridge into target sectors:
 
 **HARD RULE — small direct sweeps only.** Run job searches as a handful of **foreground `WebSearch`/`WebFetch` calls the main agent makes itself**, then write one consolidated doc. **NEVER launch background or long-running multi-agent search jobs** — they burn tokens and silently fail. Keep each sweep to ~4–6 targeted queries against known employer portals; if more coverage is needed, run another small sweep, not a bigger agent. Fail-proof beats exhaustive.
 
-**Sweep-doc format:** embed each posting link **inside the results table near the top** (hyperlink the role cell) — no separate "Links" section at the bottom.
+**Canonical sweep doc format** (full template in `.claude/skills/pipeline/SKILL.md` → Step 3):
+- File: `working/active/job_sweep_{YYYY-MM-DD}_{slug}.md` — written to disk FIRST, before presenting in chat
+- Table columns (in order): `# | Role | Org | Location | Salary | Posted | Closes | Fit | P(int) | P(hire\|int) | Status`
+- **Role** cell = hyperlinked title (no separate Links section at bottom)
+- **Salary** = posted range, or `Not listed (~$X–Y est.)` with a calibrated estimate
+- **Closes** = actual date; `⚠️ VERIFY` if absent; `⚠️ URGENT` if ≤3 days
+- **Fit** = ★★★★★ stars; **P(int)** and **P(hire\|int)** = conservative estimates — NEVER omit
+- After the table: 1–2 sentence **Probability rationale**
+- Sections below the table: Role Summaries · Strong-but-not-included · Boards checked/blocked
 
 ### Job Boards to Search
 
