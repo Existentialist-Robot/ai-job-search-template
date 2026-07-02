@@ -1,0 +1,3 @@
+[submodule ".agents/vendor/linkedin-cli"]
+	path = .agents/vendor/linkedin-cli
+	url = https://github.com/Existentialist-Robot/linkedin-cli.git
